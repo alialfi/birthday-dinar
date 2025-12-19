@@ -249,6 +249,34 @@ body {
   text-align: center;
 }
 
+/* ================= LETTER TOP ================= */
+.letter-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 36px;
+  font-size: 1.05rem;
+}
+
+.letter-place {
+  opacity: .85;
+}
+
+.letter-recipient {
+  line-height: 1.4;
+}
+
+.letter-recipient .name {
+  font-size: 1.15rem;
+  opacity: .95;
+}
+
+.letter-recipient .place {
+  font-size: .95rem;
+  opacity: .7;
+}
+
+
 /* =====================================================
    MOBILE
 ===================================================== */
@@ -279,6 +307,16 @@ body {
   }
 
   .signature {
+    text-align: center;
+  }
+
+  .letter-top {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .letter-recipient {
     text-align: center;
   }
 }
@@ -355,9 +393,17 @@ body {
 
   <div class="content">
 
-    <div class="letter-header">
-      <div class="to">to : dinar erina destyani putri</div>
+    <div class="letter-top">
+      <div class="letter-place">
+        Bandung, 19 Desember 2025
+      </div>
+    
+      <div class="letter-recipient">
+        <div class="name">Dinar Erina Destyani Putri</div>
+        <div class="place">di tempat</div>
+      </div>
     </div>
+    
     
     <h1 class="title">happy birthday!</h1>
     
