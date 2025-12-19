@@ -22,17 +22,20 @@
 :root {
   --bg-table: #d8cfbf;
 
-  --paper-bg: #fdfaf4;
-  --paper-line: rgba(0,0,0,0.035);
+  --paper-bg: #fdfcf9;
+  --paper-line: rgba(255,255,255,0.06);
+  --paper-margin: #2f3e5c;
 
-  --ink-main: #4a4338;
-  --ink-soft: #5a5247;
+  /* WHITE INK */
+  --ink-main: #f5f7fb;
+  --ink-soft: #e2e6f0;
 
-  --accent-red: #c84b3a;
+  --accent-navy: #2f3e5c;
 }
 
+
 /* =====================================================
-   BODY / TABLE BACKGROUND
+   BODY / TABLE
 ===================================================== */
 body {
   margin: 0;
@@ -40,7 +43,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 
   font-family: 'Patrick Hand', cursive;
   color: var(--ink-main);
@@ -50,10 +52,8 @@ body {
   background-color: var(--bg-table);
   background-image:
     radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px),
-    radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0.12));
-  background-size: 3px 3px, 5px 5px, 100% 100%;
-  background-position: 0 0, 1px 1px, 0 0;
+    radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px, 5px 5px;
 }
 
 /* =====================================================
@@ -86,13 +86,11 @@ body {
 .calendar {
   width: 240px;
   padding: 18px 16px 22px;
-
   background: var(--paper-bg);
   border-radius: 14px;
   box-shadow: 0 14px 26px rgba(0,0,0,.18);
-
   font-family: Rockwell, serif;
-  color: #3f3428;
+  color: #2f3e5c;
   transform: rotate(-2deg);
 }
 
@@ -120,62 +118,46 @@ body {
 .date {
   padding: 6px 0;
   border-radius: 6px;
-  opacity: .85;
 }
 
 .date.active {
-  background: var(--accent-red);
+  background: var(--accent-navy);
   color: #fff;
+  border-radius: 50%;
   font-weight: 700;
-  border-radius: 50%;
-  position: relative;
-}
-
-.date.active::after {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border: 1px solid rgba(255,255,255,.5);
-  border-radius: 50%;
 }
 
 /* =====================================================
-   PHOTO (PNG TRANSPARENT)
+   PHOTO
 ===================================================== */
 .photo-slot {
   width: 450px;
   transform: rotate(2deg);
   filter:
-    drop-shadow(0 10px 15px rgba(0,0,0,0.25))
-    drop-shadow(0 25px 35px rgba(0,0,0,0.2));
+    drop-shadow(0 10px 15px rgba(0,0,0,.25))
+    drop-shadow(0 25px 35px rgba(0,0,0,.2));
 }
 
 .photo-slot img {
   width: 100%;
-  height: auto;
   display: block;
 }
 
 /* =====================================================
-   NOTEBOOK / PAPER CONTENT
+   PAPER / LETTER
 ===================================================== */
 .content {
   position: relative;
-  padding: 36px 36px 40px 52px;
-
+  padding: 42px 42px 48px 64px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 
-  font-family: 'Patrick Hand', cursive;
-
-  /* kertas */
   background-color: var(--paper-bg);
   background-image:
     linear-gradient(
       to right,
-      rgba(190,80,80,0.45) 0,
-      rgba(190,80,80,0.45) 2px,
+      var(--paper-margin) 0,
+      var(--paper-margin) 2px,
       transparent 2px
     ),
     repeating-linear-gradient(
@@ -185,94 +167,65 @@ body {
       transparent 1px,
       transparent 28px
     );
-  background-position: 30px 0, 0 0;
+  background-position: 38px 0, 0 0;
   background-size: 2px 100%, 100% 100%;
 
   border-radius: 6px;
-  transform: rotate(-0.35deg);
+  transform: rotate(-0.4deg);
 
   box-shadow:
-    0 12px 28px rgba(0,0,0,.18),
+    0 14px 28px rgba(0,0,0,.18),
     inset 0 0 0 1px rgba(0,0,0,.04);
 }
 
-/* tekstur + tinta bleed */
+/* texture + ink bleed */
 .content::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(rgba(80,60,40,0.03) 1px, transparent 1px),
-    radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
-  background-size: 4px 4px, 6px 6px;
-  opacity: .35;
+    radial-gradient(rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 4px 4px;
+  opacity: .3;
   pointer-events: none;
 }
 
-/* =====================================================
-   PAPER CLIP
-===================================================== */
+/* paper clip */
 .content::before {
   content: "";
   position: absolute;
   top: -18px;
-  left: 24px;
-
+  left: 28px;
   width: 42px;
   height: 70px;
-
-  border: 3px solid #8a8a8a;
+  border: 3px solid #8c8c8c;
   border-top-color: transparent;
   border-radius: 18px;
-
   transform: rotate(-8deg);
-  background: transparent;
-
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.25),
-    0 4px 6px rgba(0,0,0,.25);
-
-  z-index: 3;
+  box-shadow: 0 4px 6px rgba(0,0,0,.25);
 }
 
 /* =====================================================
-   TEXT (HANDWRITING + INK BLEED)
+   LETTER CONTENT
 ===================================================== */
-h1 {
-  margin: 0 0 8px;
-   font-family: 'Patrick Hand', cursive;
-  font-size: 3.6rem;
-  font-weight: 600;
-  color: #3f372d;
-
-  text-shadow:
-    1px 1px 0 rgba(0,0,0,0.15),
-    -0.5px 0.5px 0 rgba(120,80,60,0.18);
+.to {
+  font-size: 1.2rem;
+  opacity: .85;
+  margin-bottom: 32px;
 }
 
-h2 {
-  margin: 0 0 28px;
-   font-family: 'Patrick Hand', cursive;
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--ink-soft);
-
-  text-shadow:
-    0.5px 0.5px 0 rgba(0,0,0,0.12);
+.title {
+  text-align: center;
+  font-size: 3.4rem;
+  margin-bottom: 36px;
 }
 
 .text {
-   font-family: 'Patrick Hand', cursive;
   max-width: 520px;
+  align-self: center;
   font-size: 1.15rem;
   line-height: 1.9;
   letter-spacing: .35px;
-  color: var(--ink-main);
-
-  text-shadow:
-    0.3px 0.3px 0 rgba(0,0,0,0.12),
-    -0.2px 0.1px 0 rgba(120,80,60,0.15);
-
   opacity: 0;
   transition: opacity .8s ease;
 }
@@ -281,39 +234,20 @@ h2 {
   opacity: 1;
 }
 
-.hint {
-  margin-top: 28px;
-  font-size: .8rem;
-  letter-spacing: 2px;
-  opacity: .5;
-}
-
-/* ================= LETTER STRUCTURE ================= */
-.letter-header {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 36px;
-}
-
-.letter-header h1 {
-  margin: 0;
-}
-
-.to {
-  margin-top: 6px;
-  font-size: 1.25rem;
-  opacity: 0.85;
-}
-
-/* signature */
 .signature {
-  margin-top: 42px;
-  width: 100%;
+  margin-top: 48px;
   text-align: right;
   font-size: 1.15rem;
-  opacity: 0.8;
+  opacity: .85;
 }
 
+.hint {
+  margin-top: 28px;
+  font-size: .75rem;
+  letter-spacing: 2px;
+  opacity: .4;
+  text-align: center;
+}
 
 /* =====================================================
    MOBILE
@@ -330,43 +264,25 @@ h2 {
     padding: 24px 16px 48px;
   }
 
-  .calendar {
-    width: 200px;
-    transform: rotate(-1deg);
-  }
-
   .photo-slot {
     width: 90%;
     max-width: 320px;
-    transform: rotate(1deg);
   }
 
   .content {
-    align-items: center;
+    padding: 32px 24px 40px 44px;
     text-align: center;
-    padding: 28px 20px 32px 36px;
   }
 
-  h1 {
+  .title {
     font-size: 2.3rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-
-  .text {
-    font-size: 1rem;
-    text-shadow: 0.2px 0.2px 0 rgba(0,0,0,0.1);
   }
 
   .signature {
     text-align: center;
-    margin-top: 28px;
   }
-
 }
+
 
 
 </style>
@@ -440,10 +356,11 @@ h2 {
   <div class="content">
 
     <div class="letter-header">
-      <h1>happy birthday</h1>
       <div class="to">to : dinar erina destyani putri</div>
     </div>
-  
+    
+    <h1 class="title">happy birthday!</h1>
+    
     <div id="text" class="text"></div>
   
     <div class="signature">— ali alfi</div>
